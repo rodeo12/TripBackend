@@ -12,12 +12,12 @@ const MongoUrl= process.env.MongoUrl
 const tripRoutes= require("./routes/trip");
 
 
-app.use("/",tripRoutes) ;
+
 
 app.get("/", async(req,res)=>{
 return res.status(200).send({message: "hello"})
 })
-
+app.use("/",tripRoutes) ;
 mongoose.connect(process.env.MongoUrl)
 .then(()=>{
     console.log("connected to DB")
