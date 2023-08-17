@@ -8,12 +8,15 @@ app.use(express.json())
 app.use(cors());
 
 const PORT= process.env.PORT || 7979 ;
-const MongoUrl= process.env.MongoUrl || "mongodb+srv://mayank:mayank@cluster0.tmbqo77.mongodb.net/TripsCollection?retryWrites=true&w=majority" 
+const MongoUrl= process.env.MongoUrl 
 const tripRoutes= require("./routes/trip");
 
 
-app.use("/api/trip",tripRoutes) ;
+app.use("/",tripRoutes) ;
 
+app.get("/", async(req,res)=>{
+return res.status(200).send({message: "hello"})
+})
 
 mongoose.connect(process.env.MongoUrl)
 .then(()=>{

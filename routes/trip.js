@@ -5,7 +5,7 @@ const User= require("../Model/user")
 
 //Post Data
 
-router.post("/",async (req,res)=>{
+router.post("/trip",async (req,res)=>{
 try{
     const newUser = new User(req.body);
     await newUser.save();
@@ -20,7 +20,7 @@ try{
 
 //Retrieve Data 
 
-router.get("/", async (req,res)=>{
+router.get("/trip", async (req,res)=>{
 try{
     const user= await User.find();
     res.status(200).json(user);
@@ -32,7 +32,7 @@ try{
 
 //Delete Data 
 
-router.delete("/:id", async (req,res)=>{
+router.delete("/trip/:id", async (req,res)=>{
 try{
 const deletedUser= await User.findByIdAndDelete(req.params.id);
 if(!deletedBooks){
@@ -49,7 +49,7 @@ res.status(200).json({message:"Data deleted successfully"});
 
 //Filtering Data
 
-router.get("/filter", async (req,res)=>{
+router.get("/trip/filter", async (req,res)=>{
     const {destination}= req.query
     try{
      const filteredDestination = await User.find({destination}) ;
@@ -61,7 +61,7 @@ router.get("/filter", async (req,res)=>{
 
 //Sort
 
-router.get("/sort", async (req,res)=>{
+router.get("/trip/sort", async (req,res)=>{
 const {budget}=req.query 
 
 try{
